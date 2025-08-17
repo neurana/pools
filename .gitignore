@@ -1,0 +1,67 @@
+# -----------------------
+# Python
+# -----------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtualenvs
+.venv/
+venv/
+ENV/
+env/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Linters / typing / tests
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.mypy_cache/
+.pyre/
+ruff_cache/
+.dmypy.json
+
+# -----------------------
+# IDE / OS
+# -----------------------
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# -----------------------
+# Logs
+# -----------------------
+*.log
+logs/
+
+# -----------------------
+# Projeto (runtime/data)
+# -----------------------
+data/            # volume local montado em /data (skills, venvs, logs)
+userdata/        # caso rode fora do Docker e gere localmente
+*.skill.json     # exports de skills
+.config/         # caches locais opcionais
+
+# Secrets / env
+config/fernet.key
+.env
+.env.*
+.envrc
+
+# -----------------------
+# Docker
+# -----------------------
+docker-compose.override.yml
+config/agent.docker.toml
+
+# Caches genéricos
+.cache/

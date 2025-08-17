@@ -1,0 +1,37 @@
+# config/agent.toml
+[agent]
+bind_host = "0.0.0.0"
+port = 8081
+base_dir    = "/data"
+secrets_dir = "/data/_secrets"
+
+# Se for publicar por um domínio/proxy, preencha (sem barra no fim), ex: "https://api.exemplo.com"
+public_base_url = ""
+
+log_level = "INFO"
+json_logs = true
+cors_allow_origins = []
+
+[skills]
+api_port_start = 18000
+api_port_end   = 19999
+
+[restart_defaults]
+mode = "on-failure"
+max_restarts   = 5
+window_seconds = 60
+min_uptime     = 3.0
+backoff_seconds = 1.0
+backoff_factor  = 1.5
+backoff_max     = 30.0
+
+[observability]
+prometheus_metrics    = true
+log_rotate_max_bytes  = 5242880
+log_rotate_backups    = 2
+
+[security]
+# Deixe vazio e use AGENT_SECRETS_MASTER_FILE=/run/secrets/fernet_key no docker-compose
+secrets_master      = ""
+secrets_master_file = ""
+allow_plaintext_env = false

@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  pool-agent:
+    build: .
+    container_name: pool-agent
+    ports:
+      - "8081:8081"
+      # publique o intervalo que desejar para as skills-API
+      - "18000-18050:18000-18050"
+    environment:
+      AGENT_CONFIG: /app/config/agent.docker.toml
+      AGENT_SECRETS_MASTER_FILE: /run/secrets/fernet_key 
+      AGENT_PUBLIC_BASE_URL: "https://apps.neurana.cloud"
+    secrets:
+      - fernet_key
+    volumes:
+      - ./data:/data
+      - ./config/agent.toml:/app/config/agent.docker.toml:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8081/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+secrets:
+  fernet_key:
+    file: ./config/fernet.key

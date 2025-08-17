@@ -46,10 +46,10 @@ logs/
 # -----------------------
 # Projeto (runtime/data)
 # -----------------------
-data/            # volume local montado em /data (skills, venvs, logs)
-userdata/        # caso rode fora do Docker e gere localmente
-*.skill.json     # exports de skills
-.config/         # caches locais opcionais
+data/             
+userdata/         
+*.skill.json     
+.config/         
 
 # Secrets / env
 config/fernet.key
